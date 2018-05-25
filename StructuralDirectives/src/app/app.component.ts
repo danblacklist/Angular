@@ -2,28 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-  <h1>{{title}}-Component</h1>
-
-  <h2 *ngIf="display; else elseBlock">Danish</h2>
-  <hr>
-  <button (click)="onClick()">Reveal</button>
-  <hr>
-  <button (click)="onClickHide()">Hide</button>
-  <hr>
-  <input [(ngModel)]="userInput" type="text">
-  {{userInput}}
-  <button (click)="logName()">log</button>
-
-<ng-template #elseBlock>
-  <h2>Click to reveal Name</h2>
-</ng-template>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
   display=false;
+  color="";
   userInput="danish"
   title = 'app';
 
@@ -39,5 +24,18 @@ export class AppComponent {
   onClickHide()
   {
     this.display=false;
+  }
+
+  onRed(event)
+  {
+    this.color="red";
+  }
+  onBlue(event)
+  {
+    this.color="blue";
+  }
+  onGreen(event)
+  {
+    this.color="green";
   }
 }

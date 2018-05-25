@@ -1,7 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  
+<h1>{{title}}-Component</h1>
 
+<app-test></app-test>
+
+  <h2 *ngIf="display; else elseBlock">Danish</h2>
+  <hr>
+  <button (click)="onClick()">Reveal</button>
+  <hr>
+  <button (click)="onClickHide()">Hide</button>
+  <hr>
+  <input [(ngModel)]="userInput" type="text">
+  {{userInput}}
+  <button (click)="logName()">log</button>
+<hr>
+  <div [ngSwitch]="color">
+  <div *ngSwitchCase="'red'" class="r">RED</div>
+  <div *ngSwitchCase="'blue'" class="b">blue</div>
+  <div *ngSwitchCase="'green'" class="g">green</div>
+  <div *ngSwitchDefault>DEFAULT</div>
+  </div>
+  <button (click)="onRed($event)">RED</button>
+  <button (click)="onBlue($event)">BLUE</button>
+  <button (click)="onGreen($event)">GREEN</button>
+
+<ng-template #elseBlock>
+  <h2>Click to reveal Name</h2>
+</ng-template>
