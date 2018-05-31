@@ -10,3 +10,9 @@
 .b {
     color: blue
 }
+.margin10{
+    margin: 2px !important;
+}
+.opacityClass{
+    opacity: 0.8;
+}

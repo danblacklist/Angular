@@ -1,7 +1,5 @@
 <h1>{{title}}-Component</h1>
 
-<app-test></app-test>
-
   <h2 *ngIf="display; else elseBlock">Danish</h2>
   <hr>
   <button (click)="onClick()">Reveal</button>
@@ -18,10 +16,44 @@
   <div *ngSwitchCase="'green'" class="g">green</div>
   <div *ngSwitchDefault>DEFAULT</div>
   </div>
-  <button (click)="onRed($event)">RED</button>
-  <button (click)="onBlue($event)">BLUE</button>
-  <button (click)="onGreen($event)">GREEN</button>
+  <button pButton type="button" (click)="onRed($event)"  label="RED" class="margin10"></button>
+  <button pButton type="button" (click)="onBlue($event)" label="BLUE" class="margin10"></button>
+  <button pButton type="button" (click)="onGreen($event)" label="GREEN" class="margin10"></button>
+  <button pButton type="button" (click)="onGreen($event)" label="Click" class="margin10"></button>
 
 <ng-template #elseBlock>
   <h2>Click to reveal Name</h2>
 </ng-template>
+
+
+<hr>
+<h1 class="g">Test Component</h1>
+<hr>
+<p-button label="Click" (onClick)="handleClick($event)"></p-button>
+
+<app-test (childEvent) = "message=$event" [parentName] = "name"></app-test>
+<h2>{{message}}</h2>
+
+<p-dialog header="Title" [(visible)]="displayFlag" class="opacityClass">
+    <li>{{name| lowercase}}</li>
+    <li>{{name| uppercase}}</li>
+    <li>{{name| titlecase}}</li>
+    <li>{{name| slice:3:8}}</li>
+    <li>{{name| json}}</li>
+    <li><button pButton type="button" (click)="displayNumber()" label="NumberPipes"></button></li>
+    <li><button pButton type="button" (click)="displayDate()" label="DatePipes"></button></li>
+    <p-dialog header="number" [(visible)]="displayNumberFlag" class="opacityClass">
+      <li>{{7.786| number:'1.2-3'}}</li>
+      <li>{{7.786| number:'3.4-5'}}</li>
+      <li>{{7.786| number:'2.4-4'}}</li>
+      <li>{{0.64| percent}}</li>
+      <li>{{0.64| currency: 'JPY'}}</li>
+    </p-dialog>
+    <p-dialog header="Date" [(visible)]="displayDateFlag" class="opacityClass">
+      <li>{{date}}</li>
+      <li>{{date| date:'shortDate'}}</li>
+      <li>{{date| date:'shortTime'}}</li>
+    </p-dialog>
+</p-dialog>
+
+<button pButton type="button" (click)="showDialog()" label="Click" class="margin10"></button>

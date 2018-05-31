@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,10 +8,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  display=false;
+  
   color="";
   userInput="danish"
   title = 'app';
+  public name = "Component Interaction P2C";
+  public message = "";
+
+    display: boolean = false;
+    displayFlag: boolean = false;
+    displayNumberFlag: boolean = false;
+    displayDateFlag: boolean = false;
+    public date=new Date();
+    showDialog() {
+        this.displayFlag = true;
+    }
 
   logName()
   {
@@ -37,5 +49,11 @@ export class AppComponent {
   onGreen(event)
   {
     this.color="green";
+  }
+  displayNumber(){
+    this.displayNumberFlag=true;
+  }
+  displayDate(){
+    this.displayDateFlag=true;
   }
 }
