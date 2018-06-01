@@ -37,6 +37,9 @@ export class AppComponent {
   {
     this.display=false;
   }
+  onHide(event) {
+    this.displayFlag=true;
+  }
 
   onRed(event)
   {
@@ -52,8 +55,10 @@ export class AppComponent {
   }
   displayNumber(){
     this.displayNumberFlag=true;
+    this.displayFlag=false;
   }
   displayDate(){
     this.displayDateFlag=true;
+    this.displayFlag=false;
   }
 }

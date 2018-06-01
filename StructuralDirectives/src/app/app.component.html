@@ -34,7 +34,7 @@
 <app-test (childEvent) = "message=$event" [parentName] = "name"></app-test>
 <h2>{{message}}</h2>
 
-<p-dialog header="Title" [(visible)]="displayFlag" class="opacityClass">
+<p-dialog header="Title" [(visible)]="displayFlag" class="opacityClass" >
     <li>{{name| lowercase}}</li>
     <li>{{name| uppercase}}</li>
     <li>{{name| titlecase}}</li>
@@ -42,18 +42,17 @@
     <li>{{name| json}}</li>
     <li><button pButton type="button" (click)="displayNumber()" label="NumberPipes"></button></li>
     <li><button pButton type="button" (click)="displayDate()" label="DatePipes"></button></li>
-    <p-dialog header="number" [(visible)]="displayNumberFlag" class="opacityClass">
+    </p-dialog>
+<p-dialog header="number" [(visible)]="displayNumberFlag" class="opacityClass" (click)="onHide($event)" >
       <li>{{7.786| number:'1.2-3'}}</li>
       <li>{{7.786| number:'3.4-5'}}</li>
       <li>{{7.786| number:'2.4-4'}}</li>
       <li>{{0.64| percent}}</li>
       <li>{{0.64| currency: 'JPY'}}</li>
     </p-dialog>
-    <p-dialog header="Date" [(visible)]="displayDateFlag" class="opacityClass">
+    <p-dialog header="Date" [(visible)]="displayDateFlag" class="opacityClass" (click)="onHide($event)">
       <li>{{date}}</li>
       <li>{{date| date:'shortDate'}}</li>
       <li>{{date| date:'shortTime'}}</li>
     </p-dialog>
-</p-dialog>
-
 <button pButton type="button" (click)="showDialog()" label="Click" class="margin10"></button>
