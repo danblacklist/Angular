@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FurnitureService } from 'src/app/furniture.service';
+import {PanelModule} from 'primeng/panel';
+
 
 @Component({
   selector: 'app-furniture-list',
@@ -15,7 +17,8 @@ export class FurnitureListComponent implements OnInit {
   
 
   ngOnInit() {
-    this.furnitures=this._furnitureService.getFurniture();
+    this._furnitureService.getFurniture()
+        .subscribe(data => this.furnitures = data);
   }
 
 }

@@ -2,3 +2,21 @@
 <ul *ngFor="let f of furnitures">
   <li>{{f.name}}   {{f.price}}  {{f.dimensions}}</li>
 </ul>
+<p-dataView [value]="furnitures">
+    <ng-template let-f pTemplate="listItem">
+        <div>
+            {{f.name}} - {{f.price}} - {{f.dimensions}}
+        </div>
+    </ng-template>
+</p-dataView>
+<hr>
+<p-dataView [value]="furnitures" [paginator]="true" [rows]="20">
+    <ng-template let-f pTemplate="gridItem">
+        <div style="padding:.5em" class="ui-g-12 ui-md-3">
+            <p-panel [header]="f.name" [style]="{'text-align':'center'}">
+                <div>{{f.price}} - {{f.dimensions}}</div>
+                <hr class="ui-widget-content" style="border-top:0">
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataView>

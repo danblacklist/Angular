@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { IFurniture } from './furniture';
+import { Observable } from 'rxjs/observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FurnitureService {
 
-  constructor() { }
+  private _url:string ="/assets/data/furniture.json";
 
-  public getFurniture(){
-    return [
-      {"name":"Wardrobe","price":20000,"dimensions":[45,52,20]},
-      {"name":"Bed","price":18000,"dimensions":[120,60,40]},
-      {"name":"Chair","price":20000,"dimensions":[20,30,60]}
-    ];
+  constructor(private http: HttpClient) { }
+
+  public getFurniture(): Observable<IFurniture[]>{
+    return this.http.get<IFurniture[]>(this._url);
   }
 }
