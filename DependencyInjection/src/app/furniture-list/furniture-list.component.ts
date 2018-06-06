@@ -11,6 +11,7 @@ import {PanelModule} from 'primeng/panel';
 export class FurnitureListComponent implements OnInit {
 
   public furnitures = [];
+  public errorMsg;
 
   constructor(private _furnitureService: FurnitureService) { }
 
@@ -18,7 +19,8 @@ export class FurnitureListComponent implements OnInit {
 
   ngOnInit() {
     this._furnitureService.getFurniture()
-        .subscribe(data => this.furnitures = data);
+        .subscribe(data => this.furnitures = data,
+                   error => this.errorMsg = error); 
   }
 
 }

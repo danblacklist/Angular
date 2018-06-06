@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IFurniture } from './furniture';
 import { Observable } from 'rxjs/observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +16,11 @@ export class FurnitureService {
   constructor(private http: HttpClient) { }
 
   public getFurniture(): Observable<IFurniture[]>{
-    return this.http.get<IFurniture[]>(this._url);
+    return this.http.get<IFurniture[]>(this._url)
+                    .catch(this.errorHandler);
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
   }
 }

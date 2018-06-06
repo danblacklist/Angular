@@ -11,9 +11,11 @@ export class FurnitureDetailsComponent implements OnInit {
   constructor(private _furnitureService: FurnitureService) { }
 
   public furnitures = [];
+  public errorMsg;
 
   ngOnInit() {
-    this.furnitures=this._furnitureService.getFurniture();
+    this._furnitureService.getFurniture()
+        .subscribe(data => this.furnitures = data,
+                   error => this.errorMsg = error); 
   }
-
 }

@@ -1,0 +1,15 @@
+.active {
+    color: blue;
+}
+
+.button {
+    display: block;
+    width: 60px;
+    height: 10px;
+    background: ivory;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50px;
+    color:black;
+    font-weight: bold;
+}
