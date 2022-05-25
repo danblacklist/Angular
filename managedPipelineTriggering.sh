@@ -1,5 +1,5 @@
-#!/bin/bash
 tryCount=1
+echo "START"
 declare -a currentStageStates
 pipelineTriggered=0
 
