@@ -3,8 +3,9 @@ echo "START"
 declare -a currentStageStates
 pipelineTriggered=0
 
-until [[ $tryCount -lt 121 ]]; do #Configuring for 120 retries 5 seconds per retry, so will retry for 10 minutes.
-  #statements
+until [ $tryCount -lt 121 ];
+do #Configuring for 120 retries 5 seconds per retry, so will retry for 10 minutes.
+
   echo "Trigger pipeline attempt $tryCount"
   currentStates=$(aws codepipeline get-pipeline-state --name s3-to-cfn --query "stageStates[].latestExecution.status" --output text) #Gets current pipeline stage states
   currentStageStates=($currentStates)
